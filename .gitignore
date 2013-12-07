@@ -1,0 +1,46 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+# gradle stuff
+build
+.gradle
+.watsonrc
+.watsonresults
+run
+out
+src/api
+*.class
+mcrun
+*.DS_STORE
+# Package Files #
+*.war
+*.ear
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+config
+*.tmp
+*.bak
+*.swp
+*~.nib
+saves
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
