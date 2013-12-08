@@ -13,7 +13,8 @@ public class Prompter extends JFrame{
 
         add(new JTextArea("These are the logs we have collected, please give this link to the person " +
                 "helping you solve the problem: http://hastebin.com/" +
-                hastebinCode, 5, 25));
+                hastebinCode + "\n If you don't know why you are getting this message, " +
+                "it is most likely something to do with a debug variable enabled in the DebugHandler config.", 5, 25));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new FlowLayout());
