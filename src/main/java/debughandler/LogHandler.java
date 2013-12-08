@@ -33,7 +33,7 @@ public class LogHandler {
                 lastDate = new Date();
                 time = lastDate + "\n";
             }
-            out.printf(time + "\t[%s][Debug] " + str, this.name);
+            out.printf(time + "\t[%s][Debug] " + str + "\n", this.name);
             out.close();
         } catch (IOException e) {
             //oh noes!
