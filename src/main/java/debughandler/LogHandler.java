@@ -12,12 +12,10 @@ import java.util.concurrent.TimeUnit;
 public class LogHandler {
     public String name;
     private Date lastDate;
-    private Date startupDate;
 
     public LogHandler(String nameSet) {
         name = nameSet;
         lastDate = new Date();
-        startupDate = new Date();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -27,8 +25,7 @@ public class LogHandler {
             file.mkdirs();
             file = new File("DebugHandler/" + name + ".log");
             PrintWriter out = new PrintWriter(new BufferedWriter(new java.io.FileWriter(file, true)));
-            String time = startupDate.toString();
-            startupDate = null;
+            String time = "";
             if (TimeUnit.MILLISECONDS.toSeconds(new Date().getTime()) !=
                     TimeUnit.MILLISECONDS.toSeconds(lastDate.getTime())) {
                 lastDate = new Date();
