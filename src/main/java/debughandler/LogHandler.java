@@ -1,13 +1,55 @@
 package debughandler;
 
-public class LogHandler {
-    public FileUploader uploader;
-    public Prompter prompter;
-    public FileWriter writer;
+import net.minecraft.tileentity.TileEntity;
 
-    public LogHandler(){
-        uploader = new FileUploader();
-        prompter = new Prompter();
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+public class LogHandler {
+    public FileWriter writer;
+    public String name;
+    private Date lastDate;
+    private Date startupDate;
+
+    public LogHandler(String nameSet) {
         writer = new FileWriter();
+        name = nameSet;
+        lastDate = new Date();
+        startupDate = new Date();
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    public void debugPrint(String str) {
+        try {
+            File file = new File("DebugHandler/");
+            file.mkdirs();
+            file = new File("DebugHandler/" + name + ".log");
+            PrintWriter out = new PrintWriter(new BufferedWriter(new java.io.FileWriter(file, true)));
+            String time = startupDate.toString();
+            startupDate = null;
+            if (TimeUnit.MILLISECONDS.toSeconds(new Date().getTime()) !=
+                    TimeUnit.MILLISECONDS.toSeconds(lastDate.getTime())) {
+                lastDate = new Date();
+                time = lastDate + "\n";
+            }
+            out.printf(time + "\t[%s][Debug] " + str, this.name);
+            out.close();
+        } catch (IOException e) {
+            //oh noes!
+        }
+    }
+
+    public void debugPrint(Object obj) {
+        debugPrint(obj.toString());
+    }
+
+    public void debugPrint(TileEntity tile, String str) {
+        debugPrint(tile.getClass().toString() + " at: [x]" + tile.xCoord + " | [y]" +
+                tile.yCoord + " | [z]" +
+                tile.zCoord + " => " + str);
     }
 }
