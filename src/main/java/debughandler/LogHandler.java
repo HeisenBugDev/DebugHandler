@@ -20,6 +20,7 @@ public class LogHandler {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void debugPrint(String str) {
+        if (Config.debug == null) return;
         if (!Config.debug.getBoolean(false)) return;
         try {
             File file = new File("DebugHandler/");
