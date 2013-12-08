@@ -10,13 +10,11 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class LogHandler {
-    public FileWriter writer;
     public String name;
     private Date lastDate;
     private Date startupDate;
 
     public LogHandler(String nameSet) {
-        writer = new FileWriter();
         name = nameSet;
         lastDate = new Date();
         startupDate = new Date();
