@@ -16,4 +16,8 @@ public class DebugRegistry {
             e.printStackTrace();
         }
     }
+
+    public static void resetLogs(){
+        ResetLogs.resetLogs(logHandlers);
+    }
 }
